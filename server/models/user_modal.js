@@ -12,6 +12,14 @@ class User_modal
    else return false;
    }
 
+   // select user information
+
+   information=(data)=>
+   {
+   const user_info= db.find(av=>av.email ==data)
+   return user_info;
+   }
+
    // push data in our database after full verification in our controller
 
   signup =(data)=>
