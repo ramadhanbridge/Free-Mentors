@@ -11,7 +11,7 @@ router.use(bodyParser.urlencoded({ extended: true }));
 router.use(bodyParser.json());
 
 // available routes for Auth
-
+router.post('/auth/signin', Auth.signin);
 router.post('/auth/signup', Auth.signup);
 
 // export router
