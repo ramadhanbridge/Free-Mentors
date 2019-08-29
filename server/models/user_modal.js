@@ -2,7 +2,17 @@ import user_table from './memory';
 const db=user_table.web_user;
 class User_modal
 {
-  // push data in our database after full verification in our controller
+
+   // select  email is not taken by onether user
+  
+   verify_email=(data)=>
+   {
+   const email_exist= db.find(av=>av.email ==data)
+   if(email_exist) return true;
+   else return false;
+   }
+
+   // push data in our database after full verification in our controller
 
   signup =(data)=>
   { 
