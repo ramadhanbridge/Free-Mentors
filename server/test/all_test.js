@@ -250,3 +250,41 @@ describe(' (12) signin with valid information as admin and user exist, api/v1/au
       });
   });
 });
+
+
+describe(' (13) signin with valid information as admin and delete review that not available', () => {
+  const user_info = user[4];
+  const admin_token = jwt.sign({ user_info }, process.env.PASS_KEY, { expiresIn: '1h' });
+  it('should return info', (done) => {
+    chai.request(app)
+      .delete('/api/v1/sessions/-1/review')
+      .set('authorization', admin_token)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal(404);
+        expect(res.body.message).to.equal('session does not exist');
+        done();
+      });
+  });
+});
+
+
+describe(' (14) signin with valid information as admin and delete review that exist', () => {
+  const user_info = user[4];
+  const admin_token = jwt.sign({ user_info }, process.env.PASS_KEY, { expiresIn: '1h' });
+  it('should return info', (done) => {
+    chai.request(app)
+      .delete('/api/v1/sessions/1/review')
+      .set('authorization', admin_token)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal(200);
+        expect(res.body.data).to.be.an('object');
+        done();
+      });
+  });
+});
+
+
