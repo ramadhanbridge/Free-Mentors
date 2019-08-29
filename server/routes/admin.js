@@ -15,5 +15,9 @@ router.use(json());
 
 router.patch('/user/:userid', TOKEN, ADMIN, admin.change_mentee);
 
+
+// optional endpoints
+router.delete('/sessions/:sessionId/review', TOKEN, ADMIN, admin.delete_review);
+
 // export router
 export default router;
