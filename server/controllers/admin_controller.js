@@ -14,6 +14,14 @@ else{
 }
 }
 
+delete_review=(req,res)=>
+{
+const single_mentor=db.admin_delete_session(req.params.sessionId);
+if(!single_mentor){return res.status(404).json({status:404,message:"session does not exist"})}else{
+
+return res.status(200).json({status:200,data:{message:"review  successful deleted"}})
+}}
+
 }
 
 export default new Admin_controller();
