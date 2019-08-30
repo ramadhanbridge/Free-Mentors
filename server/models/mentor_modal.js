@@ -11,7 +11,14 @@ class Mentor_modal
    return user_info;
    }
 
+    // reject  request 
 
+    reject_session =(data)=>
+    {
+    const user_info=db.find(session=>session.sessionId==data && session.status=="request")
+    return user_info;
+    }
+ 
 
 }
 export default new Mentor_modal();
