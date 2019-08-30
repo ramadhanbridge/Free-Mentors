@@ -42,6 +42,30 @@ const session_created= db.create_session(session_info)
 return res.status(200).json({status:200,message:"request sent",data:session_created})
 } 
 
+//  this will allow mentee to post review after mentorship session
+review=(req,res)=>
+{
+// check if score and remark is provided
+if(req.body.score === undefined || req.body.remark === undefined) 
+{return res.status(400).json({status:400,message:"you have to enter score and remarks"})}
+// check if session is available
+const single_mentor= db.session(req.params.sessionId)
+if(!single_mentor){return res.status(404).json({status:404,message:"session does not exist"})}
+else{
+const menteeFullname=res.mentee_info.user_info.firstName +" "+res.mentee_info.user_info.lastname
+const data=
+{
+   sessionId:single_mentor.sessionId,
+   mentorId:single_mentor.mentorId,
+   menteeId:single_mentor.menteeId,
+   menteeFullname:menteeFullname, 
+   score:req.body.score,
+   remark:req.body.remark
+}
+const review_detail=db.review(data)
+return res.status(201).json({status:201,message:"review successful sent",review_detail})
+}
+}
 
 
 

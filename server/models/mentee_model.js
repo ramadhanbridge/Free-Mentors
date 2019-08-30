@@ -28,6 +28,22 @@ class Mentee_modal
     db_session.push(data)
     return data;
     }
+
+     // mentee should be able to make review after mentorship session
+    
+     review=(data)=>
+     {
+         db_review.push(data)
+         return data;
+     }
+ 
+     // specific session
+     session=(data)=>
+     {
+         const find_session=db_session.find(single=> single.sessionId==data)
+         return find_session; 
+     }
+ 
   
    // session id
    sessionId=()=>
