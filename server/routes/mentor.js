@@ -14,6 +14,7 @@ router.use(json());
 // all method that will be used by mentor
 
 router.patch('/:sessionId/accept', TOKEN, MENTOR, mentor.accept_session);
+router.patch('/:sessionId/reject', TOKEN, MENTOR, mentor.reject_session);
 
 
 
