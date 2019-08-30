@@ -18,5 +18,9 @@ router.get('/mentors', TOKEN, MENTEE, mentee.all_mentors);
 router.get('/mentors/:mentorid', TOKEN, MENTEE, mentee.specific_mentor);
 router.post('/sessions', TOKEN, MENTEE, mentee.session_request);
 
+// optional endpoints
+
+router.post('/sessions/:sessionId/review', TOKEN, MENTEE, mentee.review);
+
 // export router
 export default router;
