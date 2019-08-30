@@ -13,7 +13,14 @@ class Mentee_modal
     return all_sessions;
    }
 
- 
+  // get specific mentor
+  
+  specific_mentor =(data)=>
+  {
+  const specific_mentor= db_users.find(all=>all.id==data && all.role=="mentor")
+  return specific_mentor;
+  }
+
 
 }
 export default new Mentee_modal();
