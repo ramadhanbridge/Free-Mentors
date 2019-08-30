@@ -15,6 +15,6 @@ router.use(json());
 // all method that will be accessible by only mentee
 
 router.get('/mentors', TOKEN, MENTEE, mentee.all_mentors);
-
+router.get('/mentors/:mentorid', TOKEN, MENTEE, mentee.specific_mentor);
 // export router
 export default router;
