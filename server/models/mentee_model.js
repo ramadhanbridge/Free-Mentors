@@ -21,6 +21,20 @@ class Mentee_modal
   return specific_mentor;
   }
 
+    // create session 
+
+    create_session =(data)=>
+    {
+    db_session.push(data)
+    return data;
+    }
+  
+   // session id
+   sessionId=()=>
+   {
+       const length=db_session.length
+       return length; 
+   }
 
 }
 export default new Mentee_modal();
