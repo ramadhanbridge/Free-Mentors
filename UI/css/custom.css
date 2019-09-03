@@ -164,6 +164,14 @@ border-radius: 7px;
     background-repeat: no-repeat;
     background-size: cover;
 }
+#banner_home
+{
+    background: url('../image/m1.jpg');
+    height: 400px;
+    width:100%;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
 #banner-admin
 {
    background: url('../image/m1.jpg');
@@ -205,7 +213,7 @@ border-radius: 7px;
 {
     height: 100vh;
     width: 100%;
-    background:     rgba(15, 15, 15, 0.79);
+    background:    rgba(0, 0, 0, 0.88);
     display: grid;
     place-content: center;
     color:white;
@@ -449,12 +457,12 @@ color: white;
 border-radius: 4px;
 margin-top:6px;
 }
-h6
+.h4_center
 {
     text-align: center;
 }
 .m-image
-{   background: url('../image/m1.jpg');
+{   background: url('../image/m0.jpg');
     background-position-x: 0%;
     background-position-y: 0%;
     background-repeat: repeat;
@@ -464,6 +472,20 @@ height: 159px;
 background-position: center;
 background-repeat: no-repeat;
 background-size: cover;
+}
+.m-image-specific{   
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-repeat: repeat;
+    background-size: auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 100%;
+    height: 161px;
+    width: 162px;
+    align-content: center;
+    margin: 0 auto
 }
 .m-text
 {
@@ -569,7 +591,10 @@ input[type="text"]:focus
         border-bottom:2px solid #d5a407;
         transition: 1s;
       }
-
+::-webkit-input-placeholder 
+{ 
+       font-size:16px
+      }
 
 textarea
 {
@@ -650,8 +675,76 @@ text-align: center;
   {
     padding-right: 2px;
   }
+  .close
+  {
+      cursor: pointer;
+  }
+  .pagination
+  {
+     text-align: center ;
+     margin : 35px;
+  }
+  .active
+  {
+    cursor: pointer;
+    background: #d5a407;
+    padding: 10px;
+    border-radius: 50%;
+    margin: 8px;
+ }
+ .pg
+ { cursor: pointer;
+ 
+   padding: 10px;
+   border-radius: 50%;
+   margin: 8px;
+  }
 
+   .pg:hover
+  { cursor: pointer;
+    background: #d5a407;
+    padding: 10px;
+    border-radius: 50%;
+    margin: 8px;
+   }
+   
+   .test_image
+   {
+       display:flex;
+   }
+   .test_img
+   {
+    flex:1;
+    background: url('../image/m0.jpg');
+    background-position-x: 0%;
+    background-position-y: 0%;
+    background-repeat:no-repeat;
+    background-size: auto;
+    width:100%;
+    height:300px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover
+   }
+   .test_q
+   {
+       flex:1;
+       flex: 1;
+       height: 300px;
+       display: grid;
+       place-content: center;
+       background: #b1b1b1;
+       font-size: 201%;
+   }
+   .spc_top
+   {
+       margin-top:-3px;
+   }
 
+  
+  
+ 
+  
 
 
 

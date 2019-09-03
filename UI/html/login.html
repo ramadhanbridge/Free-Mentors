@@ -13,23 +13,29 @@
 <body>
 
   <div class="login-container">
-      <div class="log-text">  <h1 class="center-h1">LOGIN AND GET FREE MENTOR</h1><h6>Trust,Belive,Change</h6> </div>
-      <div class="log-form">
+      <div class="log-text">  <h1 class="center-h1">LOGIN AND GET FREE MENTOR</h1><h3 class="h4_center">Trust,Belive,Change</h3> </div>
+      <div class="log-form" style="background: url(../image/m3.jpg);
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center;">
           <div class="form-container">
               
-              <div class="n-action">LOGIN<br><span ><a href="signup.html" class="n-change">sign-up</a></span></div>
-              <form action="" id="form-spc">
-                  <input  class="input-style" type="text" placeholder="User name">
+              <div class="n-action">LOGIN<br><span ></span></div>
+              <form action="mentor.html" class="validate" id="form-spc">
+                  <input  class="input-style" id="email" required type="email" placeholder="email">
                   <br> 
-                  <input  class="input-style last" type="password" placeholder="Password">
+                  <input  class="input-style last" id="password" required type="password" placeholder="Password">
                   <br>
-                  <a href="mentee.html"><input class="subbtn"  type="button" value="LOGIN"></a> 
+                  <button id="login_form"  class="subbtn"  type="submit">LOGIN</button>
+
               </form>
+              <div class="n-action"> <span style="color: white;font-size:73%">i dont't have account <a href="signup.html" class="n-change">sign-up</a></div></span><span ></span></div>
+             
           </div>
       </div>
   </div>
 
 
-    <!-- <script src="public/js/custom.js"></script>   -->
+    <script src="../js/custom.js"></script>  
 </body>
 </html>
