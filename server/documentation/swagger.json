@@ -1,0 +1,122 @@
+{
+    "swagger": "2.0",
+    "info": {
+      "description": "FreeMentors is a social initiative where acomplished professionals become rolemodels to young people to provide free mentorship sessions. you can know more about this project by visting our github repository https://github.com/ramadhanbridge/Free-Mentors",
+      "version": "api/v1",
+      "title": "Free-Mentors",
+      "contact": {
+        "email": "nyiringondoramadhan@gmail.com"
+      },
+      "license": {
+        "name": "License: MIT"
+      }
+    },
+    "host": "localhost:3000",
+    "basePath": "/api/v1",
+    "tags": [
+      {
+        "name": "Auth",
+        "description": "Everything about authorizing users"
+      },
+      {
+        "name": "Admin",
+        "description": "Everything about authorized admin"
+      },
+      {
+        "name": "Mentee",
+        "description": "Everything about authorized mentee"
+      },
+      {
+        "name": "Mentors",
+        "description": "Everything about authorized mentors"
+      },
+      {
+        "name": "sessions",
+        "description": "Getting sessions on the same  routes as mentee or mentors"
+      }
+    ],
+    "schemes": [
+      "http"
+    ],
+    "paths": {
+      "/auth/signup": {
+        "post": {
+          "tags": [
+            "Auth"
+          ],
+          "summary": "create new user",
+          "description": "By filling correct information,user can create account",
+          "operationId": "create account",
+          "consumes": [
+            "application/json"
+          ],
+          "produces": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "in": "body",
+              "name": "body",
+              "description": "User information that will be added to our endpoints",
+              "required": true,
+              "schema": {
+                "$ref": "#/definitions/signup"
+              }
+            }
+          ],
+          "responses": {
+            "201": {
+              "description": "Account successfully created"
+            },
+            "400": {
+              "description": "Invalid input"
+            },
+            "409": {
+              "description": "Email already exist"
+            }
+          }
+        }
+      }
+    },
+
+
+    
+
+
+
+   
+    "definitions": {
+      "signup": {
+        "type": "object",
+        "properties": {
+          "firstname": {
+            "type": "string"
+          },
+          "lastname": {
+            "type": "string"
+          },
+          "email": {
+            "type": "string"
+          },
+          "password": {
+            "type": "string"
+          },
+          "address": {
+            "type": "string"
+          },
+          "bio": {
+            "type": "string"
+          },
+          "occupation": {
+            "type": "string"
+          },
+          "expertise": {
+            "type": "string"
+          }
+        }
+      }},
+    "externalDocs": {
+      "description": "Find out more about Swagger",
+      "url": "http://swagger.io"
+    }
+  }
