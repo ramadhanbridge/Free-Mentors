@@ -111,7 +111,7 @@ review_modal.forEach((btn)=>
   btn.addEventListener('click',()=>
   { 
    
-    request_pop_up.style.display="block";
+    review_pop_up.style.display="block";
   })
 })
 
@@ -128,21 +128,6 @@ view_close.forEach((btn)=>
 submit_request.addEventListener('click',()=>
 {
   request_pop_up.style.display="none";
-})
-
-let login_form = document.querySelector('.subbtn')
-login_form.addEventListener('click',()=>
-{ 
-  console.log('sds')
-  // let email = document.querySelector('#email').value;
-  // alert("hdh")
-  // if(email=="mentor@gmail.com")
-  // {
-  //  let form_spc=document.querySelector('#form-spc')
-  //   form_spc.setAttribute('action','mentor.html')
-  //   ;
-    
-  // }
 })
 
 
