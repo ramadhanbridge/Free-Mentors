@@ -7,7 +7,7 @@ getall = (req,res)=>
 if(res.pass_info.user_info.role == "mentor")
 {
 
-    //**** mentor get all session request by different user  ****/ 
+    
 
 const all=db.all_sessions(res.pass_info.user_info.id);
 if(!all){return res.status(204).json({status:204,message:"no request so far..."})}
@@ -16,7 +16,7 @@ return res.status(200).json({status:200,message:"view all request",data:all})
 
 if(res.pass_info.user_info.role == "mentee")
 {
-    // *****this will get all session request made by mentee ***/
+  
     
 const single_mentor=db.all_session_request(res.pass_info.user_info.id)
 if(!single_mentor){return res.status(404).json({status:404,message:"user does not exist"})}

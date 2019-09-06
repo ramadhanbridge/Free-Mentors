@@ -5,7 +5,7 @@ const db_users=user_table.web_user;
 class Mentee_modal
 {
 
-   // select all mentors
+  
   
    all_mentors =()=>
    {
@@ -13,7 +13,6 @@ class Mentee_modal
     return all_sessions;
    }
 
-  // get specific mentor
   
   specific_mentor =(data)=>
   {
@@ -21,7 +20,7 @@ class Mentee_modal
   return specific_mentor;
   }
 
-    // create session 
+  
 
     create_session =(data)=>
     {
@@ -29,7 +28,7 @@ class Mentee_modal
     return data;
     }
 
-     // mentee should be able to make review after mentorship session
+    
     
      review=(data)=>
      {
@@ -37,7 +36,6 @@ class Mentee_modal
          return data;
      }
  
-     // specific session
      session=(data)=>
      {
          const find_session=db_session.find(single=> single.sessionId==data)
@@ -45,7 +43,6 @@ class Mentee_modal
      }
  
   
-   // session id
    sessionId=()=>
    {
        const length=db_session.length

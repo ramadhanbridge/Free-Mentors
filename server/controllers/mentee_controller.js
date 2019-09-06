@@ -1,7 +1,7 @@
 import db from '../models/mentee_model' 
 class Mentee_controller
 {
-//   mentee can view all mentors
+
 
 all_mentors = (req,res)=>
 {
@@ -9,8 +9,6 @@ const All_mentors=db.all_mentors();
 res.status(200).json({status:200,data:All_mentors})
 }
 
-
-//  this will get specific mentor
 specific_mentor=(req,res)=>
 {
 const single_mentor=db.specific_mentor(req.params.mentorid);
@@ -19,7 +17,7 @@ return res.status(200).json({status:200,data:single_mentor})
 }
 
 
-//  mentee should be able to make session request
+
 session_request = (req,res)=> 
 {
 
@@ -42,13 +40,12 @@ const session_created= db.create_session(session_info)
 return res.status(200).json({status:200,message:"request sent",data:session_created})
 } 
 
-//  this will allow mentee to post review after mentorship session
 review=(req,res)=>
 {
-// check if score and remark is provided
+
 if(req.body.score === undefined || req.body.remark === undefined) 
 {return res.status(400).json({status:400,message:"you have to enter score and remarks"})}
-// check if session is available
+
 const single_mentor= db.session(req.params.sessionId)
 if(!single_mentor){return res.status(404).json({status:404,message:"session does not exist"})}
 else{
@@ -66,9 +63,6 @@ const review_detail=db.review(data)
 return res.status(201).json({status:201,message:"review successful sent",review_detail})
 }
 }
-
-
-
 
 }
  export default new Mentee_controller();

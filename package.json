@@ -30,6 +30,11 @@
     "prettier-eslint-cli": "^5.0.0"
   },
   "dependencies": {
+    "@babel/cli": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/node": "^7.5.5",
+    "@babel/plugin-proposal-class-properties": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
     "@hapi/joi": "^15.1.1",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
@@ -40,13 +45,9 @@
     "jsonwebtoken": "^8.5.1",
     "node-mocks-http": "^1.7.6",
     "nodemon": "^1.19.1",
-     "@babel/cli": "^7.5.5",
-    "@babel/core": "^7.5.5",
-    "@babel/node": "^7.5.5",
-    "@babel/plugin-proposal-class-properties": "^7.5.5",
-    "@babel/preset-env": "^7.5.5",
-    
     "nyc": "^14.1.1",
-    "sinon": "^7.4.1"
+    "sinon": "^7.4.1",
+    "swagger-ui-dist": "^3.23.8",
+    "swagger-ui-express": "^4.0.7"
   }
 }
