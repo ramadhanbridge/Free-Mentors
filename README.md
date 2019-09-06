@@ -21,7 +21,7 @@
 
 > ### API endpoints
 
-#####With  endpoints, seven of them were complusory  and the rest were optional, you can test them by using heroku by simply  [clicking here](https://adc10.herokuapp.com/api/v1)
+##### With  endpoints, seven of them were complusory  and the rest were optional, you can test them by using heroku by simply  [clicking here](https://adc10.herokuapp.com/api/v1)
 
 #### Simple description of endpoints
 
