@@ -1,27 +1,29 @@
 import db from '../models/admin_model'
+import message from '../helpers/message'
 class Admin_controller
 { 
 
 change_mentee=(req,res)=>  
 {
 const single=db.admin_change_mentee(req.params.userid);
-// 404 not found
-if(!single){ return res.status(404).json({status:404,message:"user does not exist"})}
+
+if(!single){ return res.status(404).json(message.error(404,"user does not exist"))}
 else{
-// change user to a mentor
+
     single.role="mentor"
-   return   res.json({status:200,data:{message:"account changed to a mentor",user:single}})
+   return   res.status(200).json(message.success(200,"account changed to a mentor", single))
 }
 }
 
 delete_review=(req,res)=>
 {
 const single_mentor=db.admin_delete_session(req.params.sessionId);
-if(!single_mentor){return res.status(404).json({status:404,message:"session does not exist"})}else{
+if(!single_mentor){return res.status(404).json(message.error(404,"session does not exist"))}else{
 
-return res.status(200).json({status:200,data:{message:"review  successful deleted"}})
-}}
+return res.status(200).json(message.success(200,"review  successful deleted"))
 
+}
+}
 }
 
 export default new Admin_controller();

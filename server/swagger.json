@@ -1,0 +1,362 @@
+{
+    "swagger": "2.0",
+    "info": {
+     "description": "Free-Mentors",
+     "version": "api/v1",
+     "title": "Free Mentors",
+     "termsOfService": "http://swagger.io/terms/"
+    },
+    "host": "https://adc10.herokuapp.com/",
+    "basePath": "/api/v1", 
+
+    "tags": [
+     {
+      "name": "auth",
+      "description": "authentication"
+     },
+     {
+      "name": "Admin",
+      "description": "admin should delete and change mentors"
+     },
+     {
+      "name": "Mentee",
+      "description": "Mentee routes"
+     },
+     {
+        "name": "Mentor",
+        "description": "Mentor routes"
+     }
+
+    ],
+    "schemes": [
+     "http"
+    ],
+
+    "paths": {
+     "/auth/signup": {
+      "post": {
+       "tags": [
+        "auth"
+       ],
+       "summary": "user should signup",
+       "description": "",
+       "operationId": "signup",
+       "consumes": [
+        "application/json",
+        "application/xml"
+       ],
+       "produces": [
+        "application/xml",
+        "application/json"
+       ],
+       "parameters": [
+        {
+         "in": "body",
+         "name": "body",
+         "description": "create account",
+         "required": true,
+         "schema": {
+          "$ref": "#/definitions/signup"
+         }
+        }
+       ],
+       "responses": {
+        "201": {
+         "description": "Account Created Successfully"
+        },
+        "409": {
+         "description": "User already exist"
+        }
+       }
+      }
+     },
+     "/auth/signin": {
+      "post": {
+       "tags": [
+        "auth"
+       ],
+       "summary": "signin user",
+       "description": "",
+       "operationId": "signin",
+       "consumes": [
+        "application/json",
+        "application/xml"
+       ],
+       "produces": [
+        "application/xml",
+        "application/json"
+       ],
+       "parameters": [
+        {
+         "in": "body",
+         "name": "body",
+         "description": "User object that's needed to create new account",
+         "required": true,
+         "schema": {
+          "$ref": "#/definitions/signin"
+         }
+        }
+       ],
+       "responses": {
+        "201": {
+         "description": "Account Created Successfully"
+        },
+        "409": {
+         "description": "User already exist"
+        }
+       }
+      }
+     },
+     "/sessions/{sessionId}/review": {
+      "delete": {
+       "tags": [
+        "Admin"
+       ],
+       "summary": "Admin delete review",
+       "description": "",
+       "operationId": "delete review",
+       "produces": [
+        "application/xml",
+        "application/json"
+       ],
+       "parameters": [
+        {
+         "name": "authorization",
+         "in": "header",
+         "type": "string",
+         "description": "generating token in header"
+        },
+        {
+         "name": "path",
+         "in": "header",
+         "required": true
+        }
+       ],
+       "responses": {
+        "404": {
+         "description": "session does not exist"
+        },
+        "200": {
+         "description": "review  successful deleted"
+        }
+       }
+      }
+    },
+     "/user/{userId}": {
+        "patch": {
+         "tags": [
+          "Admin"
+         ],
+         "summary": "admin can change user to a mentor",
+         "description": "",
+         "operationId": "user_id",
+         "consumes": [
+          "application/json",
+          "application/xml"
+         ],
+         "produces": [
+          "application/xml",
+          "application/json"
+         ],
+         "parameters": [
+          {
+           "name": "authorization",
+           "in": "header",
+           "type": "string",
+           "description": "admin token",
+           "required": true
+          },
+          {
+              "name": "userId",
+              "in": "path",
+              "type": "string",
+              "description": "userId",
+              "required": true
+             }
+         ],
+         "responses": {
+          "200": {
+           "description": "account changed to a mentor"
+          },
+          "404": {
+           "description": "user does not exist"
+          }
+         }
+        }
+  
+
+     },
+     "/mentors": {
+      "get": {
+       "tags": [
+        "Mentee"
+       ],
+       "summary": "Mentee should get all mentor",
+       "description": "",
+       "operationId": "get_all_mentors",
+       "consumes": [
+        "application/json",
+        "application/xml"
+       ],
+       "produces": [
+        "application/xml",
+        "application/json"
+       ],
+       "parameters": [
+        {
+         "name": "authorization",
+         "in": "header",
+         "type": "string",
+         "description": "mentee token",
+         "required": true
+        }
+       ],
+       "responses": {
+        "200": {
+         "description": "success:"
+        }
+        
+       }
+      }
+     },
+     "/mentors/{mentorid}": {
+        "get": {
+         "tags": [
+          "Mentee"
+         ],
+         "summary": "Mentee should  get  a specific  mentor",
+         "description": "",
+         "operationId": "get_specific_mentor",
+         "consumes": [
+          "application/json",
+          "application/xml"
+         ],
+         "produces": [
+          "application/xml",
+          "application/json"
+         ],
+         "parameters": [
+          {
+           "name": "authorization",
+           "in": "header",
+           "type": "string",
+           "description": "mentee token",
+           "required": true
+          },
+          {
+           "name": "mentorid",
+           "in": "path",
+           "description": "mentor id must be included",
+           "required": true,
+           "type": "integer"
+          }
+         ],
+         "responses": {
+          "200": {
+           "description": "success:"
+          }
+         }
+        }
+       }
+     ,
+     "/sessions": {
+      "post": {
+       "tags": [
+        "Mentee"
+       ],
+       "summary": "mentorship session",
+       "description": "user should be able to create mentorship session",
+       "produces": [
+        "application/xml",
+        "application/json"
+       ],
+       "parameters": [
+        {
+         "name": "authorization",
+         "in": "header",
+         "type": "string",
+         "description": "mentee token"
+        },
+        {
+         "name": "session detail",
+         "in": "body",
+         "required": true,
+         "schema": {
+          "$ref": "#/definitions/sessions"
+         }
+        }
+       ],
+       "responses": {
+        "201": {
+         "description": "session created successfully"
+        }
+       }
+      }
+     }
+    },
+
+    "definitions": 
+    {
+     "signup": {
+      "type": "object",
+      "properties": {
+    "firstName": {
+        "type": "string"
+       },
+       "lastname": {
+        "type": "string"
+       },
+       "address": {
+        "type": "string"
+       },
+       "Bio": {
+        "type": "string"
+       },
+       "occupation": {
+        "type": "string"
+       },
+       "expertise": {
+        "type": "string"
+       },
+    
+       "email": {
+        "type": "string"
+       },
+       "password": {
+        "type": "string"
+       }
+
+      }
+      
+     },
+     "signin": {
+      "type": "object",
+      "properties": {
+       "email": {
+        "type": "string"
+       },
+       "password": {
+        "type": "string"
+       }
+      }
+      },
+      "sessions": {
+        "type": "object",
+        "properties": {
+         "mentorId": {
+          "type": "string"
+         },
+         "question": {
+          "type": "string"
+         },
+         "mentor_name":{
+             "type":"string"
+            }
+         
+        }
+        }
+
+     }
+
+
+   }

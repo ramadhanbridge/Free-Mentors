@@ -3,7 +3,7 @@ const db=user_table.session;
 class Mentor_modal
 {
 
-   // accept  request 
+  
 
    accept_session =(data)=>
    {
@@ -11,7 +11,7 @@ class Mentor_modal
    return user_info;
    }
 
-    // reject  request 
+
 
     reject_session =(data)=>
     {

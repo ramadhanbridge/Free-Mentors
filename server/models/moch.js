@@ -1,6 +1,6 @@
-class Table {
+class Fake_user {
   constructor() {
-    this.web_user = [
+    this.web_users = [
 
       {
         id: 1, firstName: 'john', lastname: 'second', email: 'john@gmail.com', role: 'mentee', password: '$2a$10$IHIXmWGctU/Ki1FvNmQaAOMMe8RxLfTmX1kxRdrApGZ7g8t5H.dpC', address: 'musanze', Bio: 'smart,with EPIC value', occupation: 'software eng', expertise: 'js c++ php',
@@ -20,10 +20,25 @@ class Table {
       {
         id: 6, firstName: 'f', lastname: 'second', email: 'fake@gmail.com', role: 'mentee', password: '$2a$10$IHIXmWGctU/Ki1FvNmQaAOMMe8RxLfTmX1kxRdrApGZ7g8t5H.dpC', address: 'musanze', Bio: 'smart,with EPIC value', occupation: 'software eng', expertise: 'js c++ php',
       },
+      { id: 7, email: 'f' },
+      {
+        firstName: 'amani',
+        lastname: 'second',
+        address: 'musanze',
+        Bio: 'smart,with EPIC value',
+        occupation: 'software eng',
+        expertise: 'js c++ php',
+        email: 'amanidiope@gmail.com',
+        password: 'ramadhan',
+      },
+      { email: 'd', password: 'ramadhan' },
+      { email: 'admin1@gmail.com', password: 'ramadhan1' },
+      { email: 'admin@gmail.com', password: 'ramadhan1' },
+      { email: 'john@gmail.com', password: 'ramadhan' },
+      { email: 'ezila@gmail.com', password: 'ramadhan' },
+      { email: 'admin@gmail.com', password: 'ramadhan' },
     ];
-
-
-    this.session = [
+    this.sessions = [
       {
         sessionId: 1, mentorId: 3, menteeId: 1, mentor_name: 'ezila', questions: 'how why when who whom when why', menteeName: 'john', menteeEmail: 'john@gm.com', status: 'request',
       },
@@ -35,7 +50,7 @@ class Table {
       },
     ];
 
-    this.review = [
+    this.reviews = [
       {
         sessionId: 1, mentorId: 1, menteeId: 2, remark: 'how why when who whom when why', menteeFullname: 'john man', score: '3',
       },
@@ -49,4 +64,4 @@ class Table {
   }
 }
 
-export default new Table();
+export default new Fake_user();

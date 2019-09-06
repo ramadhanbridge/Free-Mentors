@@ -4,7 +4,7 @@ const webuser_table=user_table.web_user;
 class Admin_modal
 {
 
-   // admin change mentee to a mentor
+ 
   
    admin_change_mentee  =(data)=>
    {
@@ -13,8 +13,6 @@ class Admin_modal
    }
 
   
-    // admin delete review
-
     admin_delete_session =(data)=>
    {
    const delete_review=review_table.find(single=> single.sessionId==data)

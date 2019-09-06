@@ -3,7 +3,7 @@ const db=user_table.web_user;
 class User_modal
 {
 
-   // select  email is not taken by onether user
+   
   
    verify_email=(data)=>
    {
@@ -12,7 +12,7 @@ class User_modal
    else return false;
    }
 
-   // select user information
+ 
 
    information=(data)=>
    {
@@ -20,7 +20,7 @@ class User_modal
    return user_info;
    }
 
-   // push data in our database after full verification in our controller
+
 
   signup =(data)=>
   { 
@@ -28,7 +28,7 @@ class User_modal
    return data;
   };
 
-  // get data length of our user table
+ 
 
    userId=()=>db.length+1;
 
