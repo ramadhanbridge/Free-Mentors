@@ -1,25 +1,32 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import jwt from 'jsonwebtoken';
-
 import { config } from 'dotenv';
-import { TOKEN } from '../middleware/verify';
 import app from '../index';
 import web from '../models/memory.js';
 import fakeuser from '../models/moch';
-import { signupValidation, loginValidation } from '../helpers/joi';
 
 const { expect } = chai;
 const user = web.web_user;
-const user_info = user[4];
-const admin_token = jwt.sign({ user_info }, process.env.PASS_KEY);
+
+let mentee_token = '';
 
 config();
 chai.use(chaiHttp);
 
 describe(' (10) signin with invalid information as admin, api/v1/auth/signin', () => {
-  const user_info = user[1];
-  const mentee_token = jwt.sign({ user_info }, process.env.PASS_KEY);
+  const user = fakeuser.web_users;
+  const user_info = user[4];
+  before(() => {
+    chai.request(app)
+      .post('/api/v1/auth/signin')
+      .send({ email: 'john@gmail.com', password: 'ramadhan' })
+      .then((res) => {
+        mentee_token = res.body.data.token;
+      })
+      .catch((err) => console.log(err));
+  });
+
   it('should return info', (done) => {
     chai.request(app)
       .patch('/api/v1/user/4')

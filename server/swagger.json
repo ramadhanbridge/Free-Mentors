@@ -6,7 +6,7 @@
      "title": "Free Mentors",
      "termsOfService": "http://swagger.io/terms/"
     },
-    "host": "https://adc10.herokuapp.com",
+    "host": "https://adc10.herokuapp.com/",
     "basePath": "/api/v1", 
 
     "tags": [
