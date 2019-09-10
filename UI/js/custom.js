@@ -7,6 +7,15 @@ let changementee=document.querySelector('.changementee')
 let adminchangementee=document.querySelectorAll('.adminchangementee')
 let rejectsession= document.querySelectorAll('.reject-session')
 let usersession=document.querySelector('.reject-session-message')
+let view_modal=document.querySelectorAll('.view_modal')
+let View_pop_up=document.querySelector('.View_pop_up_1')
+let request_modal=document.querySelectorAll('.request_pop_up')
+let request_pop_up=document.querySelector('.request_pop_up_1')
+let view_close=document.querySelectorAll('.close')
+let submit_request=document.querySelector('.submit_request')
+let review_modal=document.querySelectorAll('.review_modal')
+let review_pop_up=document.querySelector('.review_pop_up')
+
 //event listners
 
 bar.addEventListener('click',()=>
@@ -75,6 +84,50 @@ window.onscroll = function (e)
     btn.parentNode.parentNode.removeChild(btn.parentNode)
 
    })
+})
+
+// add modal to view btn
+
+view_modal.forEach((btn)=>
+{
+  btn.addEventListener('click',()=>
+  { 
+   
+    View_pop_up.style.display="block";
+  })
+})
+
+request_modal.forEach((btn)=>
+{
+  btn.addEventListener('click',()=>
+  { 
+   
+    request_pop_up.style.display="block";
+  })
+})
+
+review_modal.forEach((btn)=>
+{
+  btn.addEventListener('click',()=>
+  { 
+   
+    review_pop_up.style.display="block";
+  })
+})
+
+
+view_close.forEach((btn)=>
+{
+ btn.addEventListener('click',()=>
+{
+  View_pop_up.style.display="none";
+  request_pop_up.style.display="none";
+  review_pop_up.style.display="none";
+})
+})
+submit_request.addEventListener('click',()=>
+{
+  request_pop_up.style.display="none";
 })
 
 
