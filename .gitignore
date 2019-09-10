@@ -1,0 +1,6 @@
+node_modules
+package-lock.json
+.nyc_output
+.env
+UI/image/event_technology.jpg
+ 
