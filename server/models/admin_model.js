@@ -1,4 +1,4 @@
-import user_table from './memory';
+import user_table from './db';
 const review_table=user_table.review;
 const webuser_table=user_table.web_user;
 class Admin_modal
