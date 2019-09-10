@@ -1,8 +1,16 @@
+html{
+    min-height:100%;
+    display:grid;
+}
+
 body
-{
+{  
+ 
     margin: 0;
     padding: 0;
-   font-family: 'Roboto Condensed', sans-serif;
+    font-family: 'Roboto Condensed', sans-serif;
+    min-height:100%;
+    display:grid
 }
 header
 {
@@ -799,16 +807,63 @@ text-align: center;
 
 
 
-
-
-
-
-
-
-   
-/* media query */
-@media (max-width:991px)
+@media (min-width:1500px)
  {
+     body{
+
+         font-size: 50px !important
+     }
+     .test_img
+     {
+         height:820px;
+
+     }
+     .overlay
+{
+    height: 800px;
+    width: 100%;
+    background:     rgba(15, 15, 15, 0.79);
+    display: grid;
+    place-content: center;
+    color:white;
+    text-align: center
+}
+     #banner_home
+{
+    background: url('../image/m1.jpg');
+    height: 800px;
+    width:100%;
+    background-repeat: no-repeat;
+    background-size: cover; 
+}
+     .test_q
+     {
+         height:820px;
+         
+     }
+
+     .text_qoute
+     {
+        font-size: 50px; 
+     }
+     header .logo
+     {
+         font-size:50px;
+     }
+     
+
+ }
+
+
+
+
+
+@media (max-width:991px)
+ {  
+    .text_qoute
+  {
+     font-size: 14px; 
+  }
     .bars
     {
         display:block;
@@ -849,6 +904,14 @@ text-align: center;
 
 @media (max-width:500px)
  {
+     body{
+         min-height:100%;
+         display:grid;
+     }
+  .text_qoute
+  {
+     font-size: 14px; 
+  }
   .side-bar
   {
       width: 100%;
