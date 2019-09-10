@@ -9,3 +9,4 @@ router.get('/sessions', TOKEN, PASS, sessions.getall);
 
 
 export default router;
+ 
