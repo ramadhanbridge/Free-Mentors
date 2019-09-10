@@ -1,27 +1,14 @@
 import express from 'express';
 import PORT from './config/port';
-import authroute from './routes/Auth';
-import adminroute from './routes/admin';
-import menteeroute from './routes/mentee';
-import mentorroute from './routes/mentor';
-import sessionroute from './routes/sessions';
+import routes from './routes/routes_index'
 import not_found from './routes/default';
 
 const swagger = require('swagger-ui-express');
 const Api_documentation = require('./swagger.json');
-
-
 const app = express();
 
-
-app.use('/api/v1', authroute);
-app.use('/api/v1', adminroute);
-app.use('/api/v1', mentorroute);
-app.use('/api/v1', menteeroute);
-app.use('/api/v1', sessionroute);
+app.use('/api/v2',routes );
 app.use('/documentation', swagger.serve, swagger.setup(Api_documentation));
-
-
 app.use(not_found);
 
 
