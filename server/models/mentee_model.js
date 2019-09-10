@@ -1,4 +1,4 @@
-import user_table from './memory';
+import user_table from './db';
 const db_session=user_table.session;
 const db_review=user_table.review;
 const db_users=user_table.web_user;
