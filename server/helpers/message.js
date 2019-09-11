@@ -7,10 +7,11 @@ class Message
     return res.status(status_code).json(data)
    }
    
-   success = (res, status_code, message , object )=>
+   success = (res, status_code, message , data )=>
    {
-    const data={"status":status_code,"message":message,"data":object};
-    return res.status(status_code).json(data)
+      
+      const info={"status":status_code,"message":message,data};
+      return res.status(status_code).json(info)
    }
 
 }

@@ -41,7 +41,7 @@ class Auth
        const user_info =await  db.signup(data);
        const token  =jwtValidation.jwt_signin(user_info)
        
-       return  message.success(res,201,"Account successfully created ",{user_info,token})
+       return  message.success(res,201,"Account successfully created ",token)
          
       }
     }
