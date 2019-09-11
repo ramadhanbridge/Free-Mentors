@@ -1,36 +1,38 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import jwt from 'jsonwebtoken';
-
 import { config } from 'dotenv';
-
 import app from '../index';
-import web from '../models/memory.js';
 import fakeuser from '../models/moch';
 import { signupValidation } from '../helpers/joi';
 
 const { expect } = chai;
-const user = web.web_user;
+const user = fakeuser.web_users;
 
 config();
 chai.use(chaiHttp);
 
 
-describe('(1) signup with existing email', () => {
-  it('should return an error', (done) => {
+
+describe('(1) signup with completed  information', () => {
+  it('should return an info', (done) => {
+    const user = fakeuser.web_users;
+    const user_info = user[7];
     chai.request(app)
-      .post('/api/v1/auth/signup')
+      .post('/api/v2/auth/signup')
       .set('Content-Type', 'application/json')
-      .send(user[0])
+      .send(user_info)
       .end((err, res) => {
         expect(res.body).to.be.an('object');
-        expect(res.status).to.equal(409);
-        expect(res.body.status).to.equal(409);
-        expect(res.body.error).to.equal('email already exist ');
+        expect(res.status).to.equal(201);
+        expect(res.body.data).to.be.an('object');
+        expect(res.body.message).to.equal('Account successfully created ');
         done();
       });
   });
 });
+
+
 
 describe(' (2) signup with uncompleted information', () => {
   it('should return an error', (done) => {
@@ -38,7 +40,7 @@ describe(' (2) signup with uncompleted information', () => {
     const user_info = user[6];
     const { error } = signupValidation(user_info);
     chai.request(app)
-      .post('/api/v1/auth/signup')
+      .post('/api/v2/auth/signup')
       .set('Content-Type', 'application/json')
       .send({ id: 7, email: 'f' })
       .end((err, res) => {
@@ -51,20 +53,19 @@ describe(' (2) signup with uncompleted information', () => {
   });
 });
 
-describe('(3) signup with completed  information', () => {
-  it('should return an info', (done) => {
-    const user = fakeuser.web_users;
-    const user_info = user[7];
+describe('(3) signup with existing email', () => {
+  it('should return an error', (done) => {
     chai.request(app)
-      .post('/api/v1/auth/signup')
+      .post('/api/v2/auth/signup')
       .set('Content-Type', 'application/json')
-      .send(user_info)
+      .send(user[0])
       .end((err, res) => {
-        expect(res.body).to.be.an('object');
-        expect(res.status).to.equal(201);
-        expect(res.body.data).to.be.an('object');
-        expect(res.body.message).to.equal('Account successfully created ');
+        expect(res.body).to.be.an('object')
+        expect(res.status).to.equal(409);
+        expect(res.body.status).to.equal(409);
+        expect(res.body.error).to.equal('email already exist ');
         done();
       });
   });
 });
+
