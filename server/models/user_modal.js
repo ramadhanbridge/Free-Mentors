@@ -21,6 +21,21 @@ class User_modal
 
   }
 
+  information = async ( email ) =>
+  {   
+    try{
+     let conn = this.connection;
+     await conn.connect()
+     const result = await conn.query(`SELECT * FROM users WHERE email = '${email}'`);
+     console.log(result.rows[0])
+     return result.rows[0];
+    } catch (error)
+    {
+      console.log(error)
+    }
+
+  }
+
  
 
    signup = async ( data ) =>
