@@ -40,7 +40,7 @@ class Auth
 signin=async (req,res)=>
 {
   const token  =jwtValidation.jwt_signin(req.body)
-  return  message.success(res,201,"successfully logged in",token)
+  return  message.success(res,200,"successfully logged in",token)
 } 
 
 
