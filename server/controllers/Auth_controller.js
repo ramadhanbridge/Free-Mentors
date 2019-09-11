@@ -5,7 +5,7 @@ import  db from '../models/user_modal';
 import validate from '../helpers/Auth_validation';
 import jwtValidation from '../helpers/jwt'
 import  message from '../helpers/message'
-import {loginValidation,signupValidation} from "../helpers/joi";
+import {loginValidation} from "../helpers/joi";
 dotenv.config();
 class Auth
 {
@@ -14,17 +14,7 @@ class Auth
   signup = async (req,res) =>
   {
      
-    const user_email=await db.verify_email(req.body.email);
-  
-    if(user_email){ return message.error(res,409,"email already exist ") }
-    else
-    {
-      const {error}  = signupValidation(req.body)
-      
-      if(error){ return message.error(res,400,error.details[0].message)}  
-      else
-      {
-       
+    
         const data=
         {
         firstName   :req.body.firstName,
@@ -43,8 +33,8 @@ class Auth
        
        return  message.success(res,201,"Account successfully created ",token)
          
-      }
-    }
+     
+    
   }
   
 
