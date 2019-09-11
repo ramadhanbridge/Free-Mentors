@@ -3,7 +3,14 @@ class Fake_user {
     this.web_users = [
 
       {
-        id: 1, firstName: 'john', lastname: 'second', email: 'john@gmail.com', role: 'mentee', password: '$2a$10$IHIXmWGctU/Ki1FvNmQaAOMMe8RxLfTmX1kxRdrApGZ7g8t5H.dpC', address: 'musanze', Bio: 'smart,with EPIC value', occupation: 'software eng', expertise: 'js c++ php',
+        firstName: 'amani',
+        lastname: 'second',
+        address: 'musanze',
+        Bio: 'smart,with EPIC value',
+        occupation: 'software eng',
+        expertise: 'js c++ php',
+        email: 'amanidiope@gmail.com',
+        password: 'ramadhan',
       },
       {
         id: 2, firstName: 'amani', lastname: 'second', email: 'amani@gmail.com', role: 'mentee', password: '$2a$10$IHIXmWGctU/Ki1FvNmQaAOMMe8RxLfTmX1kxRdrApGZ7g8t5H.dpC', address: 'musanze', Bio: 'smart,with EPIC value', occupation: 'software eng', expertise: 'js c++ php',

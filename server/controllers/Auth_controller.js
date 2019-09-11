@@ -2,11 +2,41 @@ import  jwt from 'jsonwebtoken';
 import  dotenv from 'dotenv';
 import  bcrypt from 'bcryptjs';
 import  db from '../models/user_modal';
+import validate from '../helpers/Auth_validation';
+import jwtValidation from '../helpers/jwt'
 import  message from '../helpers/message'
-import {loginValidation,signupValidation} from "../helpers/joi";
+import {loginValidation} from "../helpers/joi";
 dotenv.config();
 class Auth
 {
+
+
+  signup = async (req,res) =>
+  {
+     
+    
+        const data=
+        {
+        firstName   :req.body.firstName,
+        lastname    :req.body.lastname,
+        address     :req.body.address,
+        Bio         :req.body.Bio ,
+        occupation  :req.body.occupation,
+        expertise   :req.body.expertise,
+        email       :req.body.email,
+        password    : await validate.password_encryption(req.body.password),
+        role : 'mentee'
+        }
+  
+       const user_info =await  db.signup(data);
+       const token  =jwtValidation.jwt_signin(user_info)
+       
+       return  message.success(res,201,"Account successfully created ",token)
+         
+     
+    
+  }
+  
 
 
 signin=async (req,res)=>
@@ -57,52 +87,9 @@ signin=async (req,res)=>
     }
 
   }
- }
+ } 
 } 
 
 
-signup =async (req,res)=>
-{
-  
-  
-  const user_email=db.verify_email(req.body.email);
-  
-  if(user_email){ return res.status(409).json(message.error(409,"email already exist "))}
-  else
-  {
-    const {error}  =signupValidation(req.body)
-    
-    if(error){ return res.status(400).json(message.error(400,error.details[0].message))}  
-    else
-    {
-      const salt         =await bcrypt.genSalt(10);
-      const hashpassword =await bcrypt.hash(req.body.password,salt)
-      const data=
-      {
-      id:db.userId(),
-      firstName   :req.body.firstname,
-      lastname    :req.body.lastname,
-      address     :req.body.address,
-      Bio         :req.body.bio ,
-      occupation  :req.body.occupation,
-      expertise   :req.body.expertise,
-      email       :req.body.email,
-      password    :hashpassword,
-      role : "mentee"
-      }
-
-     const user_info = db.signup(data);
-    
-      jwt.sign({user_info}, process.env.PASS_KEY ,{ expiresIn:'1h'},(err,token)=>
-      {
-
-      return  res.status(201).json(message.success(201,"Account successfully created ",{user_info,token}))
-      }); 
-    }
-  }
 }
-
-
-
-}
-export default new Auth;
+export default new Auth();

@@ -1,36 +1,49 @@
-import user_table from './db';
-const db=user_table.web_user;
+import  conn  from '../config/db'
+
 class User_modal
 {
+  constructor() {
+      this.connection = conn.dbConnection();
+     }
 
-   
+
+   verify_email = async ( email ) =>
+  {   
+    try{
+     let conn = this.connection;
+     await conn.connect()
+     const result = await conn.query(`SELECT * FROM users WHERE email = '${email}'`);
+     return result.rows[0];
+    } catch (error)
+    {
+      console.log(error)
+    }
+
+  }
+
+ 
+
+   signup = async ( data ) =>
+  {   
   
-   verify_email=(data)=>
-   {
-   const email_exist= db.find(av=>av.email ==data)
-   if(email_exist) return true;
-   else return false;
-   }
+     let conn = this.connection;
+     await conn.connect()
+     const result = await conn.query(`INSERT INTO users(firstName,lastname,expertise,email,occupation,role,password,address,Bio) VALUES(
+      '${data.firstName}',
+      '${data.lastname}',
+      '${data.expertise}',
+      '${data.email}',
+      '${data.occupation}',
+      '${data.role}',
+      '${data.password}',
+      '${data.address}',
+      '${data.Bio}'
+    ) returning *;
+  `);
 
- 
+    return result.rows[0];
+  }
 
-   information=(data)=>
-   {
-   const user_info= db.find(av=>av.email ==data)
-   return user_info;
-   }
-
-
-
-  signup =(data)=>
-  { 
-   db.push(data);
-   return data;
-  };
-
- 
-
-   userId=()=>db.length+1;
 
 }
 export default new User_modal();

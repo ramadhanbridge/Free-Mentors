@@ -1,16 +1,17 @@
 class Message
 {
 
-   error = ( status_code, error )=>
+   error = (res,status_code, error )=>
    {
     const data={"status":status_code,"error":error};
-    return data
+    return res.status(status_code).json(data)
    }
    
-   success = ( status_code, message , object )=>
+   success = (res, status_code, message , data )=>
    {
-    const data={"status":status_code,"message":message,"data":object};
-    return data
+      
+      const info={"status":status_code,"message":message,data};
+      return res.status(status_code).json(info)
    }
 
 }
