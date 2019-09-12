@@ -60,21 +60,4 @@ describe(' (11) signin with valid information as admin but user does not exist, 
 });
 
 
-describe(' (12) signin with valid information as admin and user exist, api/v1/auth/signin', () => {
-  const user_info = user[4];
-  const admin_token = jwt.sign({ user_info }, process.env.PASS_KEY, { expiresIn: '1h' });
-
-  it('should return info', (done) => {
-    chai.request(app)
-      .patch('/api/v2/user/2')
-      .set('authorization', admin_token)
-      .end((err, res) => {
-        expect(res.body).to.be.an('object');
-        expect(res.status).to.equal(200);
-        expect(res.body.status).to.equal(200);
-        done();
-      });
-  });
-});
-
 

@@ -67,25 +67,6 @@ describe('(3) signup with existing email', () => {
   });
 });
 
-// import chai from 'chai';
-// import chaiHttp from 'chai-http';
-// import jwt from 'jsonwebtoken';
-
-// import { config } from 'dotenv';
-
-// import app from '../index';
-// import web from '../models/memory.js';
-// import fakeuser from '../models/moch';
-// import { loginValidation } from '../helpers/joi';
-
-// const { expect } = chai;
-// const user = web.web_user;
-// const user_info = user[4];
-// const admin_token = jwt.sign({ user_info }, process.env.PASS_KEY);
-
-// config();
-// chai.use(chaiHttp);
-
 
 describe(' (4) signin with uncompleted information, api/v1/auth/signin', () => {
   it('should return an error', (done) => {

@@ -1,16 +1,25 @@
-import user_table from './db';
-const db_session=user_table.session;
-const db_review=user_table.review;
-const db_users=user_table.web_user;
+import  conn  from '../config/db'
+
 class Mentee_modal
 {
-
+    constructor() {
+        this.connection = conn.dbConnection();
+       }
+ 
   
   
-   all_mentors =()=>
+   all_mentors = async () =>
    {
-    const all_sessions= db_users.filter(all=>all.role=="mentor")
-    return all_sessions;
+    try{
+        let conn = this.connection;
+        await conn.connect()
+        const result = await conn.query(`SELECT * FROM users WHERE role = 'mentor' `);
+        return result.rows;
+       } catch (error)
+       {
+         console.log(error)
+       }
+   
    }
 
   

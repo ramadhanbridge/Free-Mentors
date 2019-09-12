@@ -1,15 +1,16 @@
 import db from '../models/mentee_model' 
+import message from '../helpers/message'
 class Mentee_controller
 {
 
 
-all_mentors = (req,res)=>
+all_mentors = async (req,res)=>
 {
-const All_mentors=db.all_mentors();
-res.status(200).json({status:200,data:All_mentors})
+ const All_mentors=await db.all_mentors();
+ return message.success(res,200,"View  available mentors",All_mentors)
 }
 
-specific_mentor=(req,res)=>
+specific_mentor= async (req,res)=>
 {
 const single_mentor=db.specific_mentor(req.params.mentorid);
 if(!single_mentor){return res.status(404).json({status:404,data:single_mentor})}
@@ -18,7 +19,7 @@ return res.status(200).json({status:200,data:single_mentor})
 
 
 
-session_request = (req,res)=> 
+session_request = async (req,res)=> 
 {
 
 if(req.body.mentorId === undefined ||req.body.mentor_name === undefined || req.body.question === undefined )
