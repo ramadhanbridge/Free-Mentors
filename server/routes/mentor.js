@@ -13,7 +13,7 @@ router.use(json());
 
 
 router.patch('/:sessionId/accept', TOKEN, MENTOR, Mentor.accept, mentor.accept_session);
-router.patch('/:sessionId/reject', TOKEN, MENTOR, mentor.reject_session);
+router.patch('/:sessionId/reject', TOKEN, MENTOR, Mentor.reject,mentor.reject_session);
 
 
 export default router;

@@ -27,10 +27,19 @@ class Mentor_modal
 
 
 
-    reject_session =(data)=>
+    reject_session = async (id) =>
     {
-    const user_info=db.find(session=>session.sessionId==data && session.status=="request")
-    return user_info;
+     
+        try{
+            let conn = this.connection;
+            await conn.connect()
+            console.log('connectionm')
+            const result = await conn.query(`UPDATE sessions SET status = 'rejected' WHERE sessionId = '${id}' AND status = 'request' returning *;`);
+            return result.rows[0];
+           } catch (error)
+           {
+             console.log(error)
+           }
     }
  
 
