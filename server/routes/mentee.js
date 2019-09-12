@@ -11,7 +11,7 @@ router.use(urlencoded({ extended: true }));
 router.use(json());
 
 
-router.get('/mentors', TOKEN, MENTEE, mentee.all_mentors);
+router.get('/mentors', TOKEN,MENTEE, mentee.all_mentors);
 router.get('/mentors/:mentorid', TOKEN, MENTEE, mentee.specific_mentor);
 router.post('/sessions', TOKEN, MENTEE, mentee.session_request);
 

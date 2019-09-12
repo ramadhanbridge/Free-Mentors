@@ -74,6 +74,8 @@ class Db_queries{
        ) 
     `);
 
+    
+
     await conn.end();
 
    } catch(err) {
