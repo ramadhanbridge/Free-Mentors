@@ -9,10 +9,10 @@ accept_session= async (req,res) =>
   return message.success(res,200,"request accepted",accepted)
 }
 
-reject_session=(req,res)=>
+reject_session= async (req,res) =>
 {
-    let accepted = await  db.reject_session(req.params.sessionId)
-    return message.success(res,200,"request accepted",accepted)
+    let rejected = await  db.reject_session(req.params.sessionId)
+    return message.success(res,200,"request rejected",rejected)
 }
 
 
