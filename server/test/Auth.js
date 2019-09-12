@@ -1,17 +1,18 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import jwt from 'jsonwebtoken';
+import db_init from '../models/db';
 import { config } from 'dotenv';
 import app from '../index';
 import fakeuser from '../models/moch';
 import {loginValidation,signupValidation } from '../helpers/joi';
 
 const { expect } = chai;
-const user = fakeuser.web_users;
+
 
 config();
 chai.use(chaiHttp);
-
+db_init.create_tables();
 
 
 describe('(1) signup with completed  information', () => {
@@ -52,11 +53,13 @@ describe(' (2) signup with uncompleted information', () => {
 });
 
 describe('(3) signup with existing email', () => {
+  const user = fakeuser.web_users;
+  const user_info = user[14];
   it('should return an error', (done) => {
-    chai.request(app)
+   chai.request(app)
       .post('/api/v2/auth/signup')
       .set('Content-Type', 'application/json')
-      .send(user[0])
+      .send(user_info )
       .end((err, res) => {
         expect(res.body).to.be.an('object')
         expect(res.status).to.equal(409);

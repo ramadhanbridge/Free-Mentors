@@ -1,7 +1,7 @@
 after_success: 
   - "npm run coverage"
 cache: 
-  directories: 
+directories: 
     - node_modules
 language: node_js
 node_js: 
@@ -10,6 +10,13 @@ install:
 - npm install
 notifications: 
   email: false
+services:
+- postgresql
+before_script:
+- psql -c 'CREATE DATABASE adc10_db;' -U postgres
+notifications: 
+  email: false
 script: 
   - "npm run test"
+
 sudo: false

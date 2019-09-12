@@ -45,7 +45,8 @@ class Fake_user {
       { email: 'ezila@gmail.com', password: 'ramadhan' },
       { email: 'admin@gmail.com', password: 'ramadhan' },
       { email: 'ramadhan@gmail.com', password: 'ramadhan'},
-      { email: 'ramadhan@gmail.com', password: 'ramadhan1'}
+      { email: 'ramadhan@gmail.com', password: 'ramadhan1'},
+      { email: '$ezila@gmail.com', password: 'ramadhan'}
     ];
     this.sessions = [
       {
