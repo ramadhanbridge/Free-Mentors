@@ -32,7 +32,6 @@ const MENTEE = (req, res, next) => {
     } else {
       if (mentee_info.user_info.role == 'mentee') {
         res.mentee_info = mentee_info;
-
         return next();
       }
 

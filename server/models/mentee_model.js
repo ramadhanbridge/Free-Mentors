@@ -38,11 +38,23 @@ class Mentee_modal
 
   
 
-    create_session =(data)=>
+    create_session = async (data) =>
     {
-    db_session.push(data)
-    return data;
+        let conn = this.connection;
+     await conn.connect()
+     const result = await conn.query(`INSERT INTO sessions(mentorId , menteeId ,  mentor_name , questions , menteeName , menteeEmail, status ) VALUES(
+      '${data.mentorId}',
+      '${data.menteeId}',
+      '${data.mentor_name}',
+      '${data.questions}',
+      '${data.menteeName}',
+      '${data.menteeEmail}',
+      '${data.status}'
+      ) returning *;
+    `);
+    return result.rows[0];
     }
+
 
     
     
@@ -58,12 +70,6 @@ class Mentee_modal
          return find_session; 
      }
  
-  
-   sessionId=()=>
-   {
-       const length=db_session.length
-       return length; 
-   }
 
 }
 export default new Mentee_modal();
