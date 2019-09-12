@@ -13,7 +13,7 @@ notifications:
 services:
 - postgresql
 before_script:
-- psql -c 'CREATE DATABASE adc10_db;' -U postgres
+- psql -c 'CREATE DATABASE adc;' -U postgres
 notifications: 
   email: false
 script: 

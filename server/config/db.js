@@ -5,7 +5,7 @@ class Database{
   
   dbConnection = () => {
     return new Pool({
-      connectionString: process.env.PG_CONNECTION
+      connectionString: process.env.DATABASE_URL
     });
   }
   
