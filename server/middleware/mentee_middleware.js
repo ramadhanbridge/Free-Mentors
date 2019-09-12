@@ -1,18 +1,16 @@
-import  db from '../models/admin_model';
+import  db from '../models/mentee_model';
 import  message from '../helpers/message'
 
 class Mentee
 {
 
-  change = async (req,res, next) =>
-  {
-    console.log("single")
-    const single= await db.admin_change_mentee(req.params.userid);
-    console.log(single)
-    if(!single){ return message.error(res,404,"mentee does not exist")}
-    next()
-  }
- 
+ specific_validate= async (req, res, next)=>
+{
+const single_mentor= await db.specific_mentor(req.params.mentorid);
+if(!single_mentor){return message.error(res,404,"mentor does not exist")}
+next()
+}
+
 
 
 }
