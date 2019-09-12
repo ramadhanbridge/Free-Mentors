@@ -73,38 +73,40 @@ describe(' (12) signin with valid information as admin and user exist, api/v1/au
 });
 
 
-// describe(' (17) signin with valid information  to get specific mentors who does not exist  ', () => {
-//   const user_info = user[1];
-//   const mentee_token = jwt.sign({ user_info }, process.env.PASS_KEY, { expiresIn: '1h' });
-//   it('should return info', (done) => {
-//     chai.request(app)
-//       .get('/api/v1/mentors/-1')
-//       .set('authorization', mentee_token)
-//       .end((err, res) => {
-//         expect(res.body).to.be.an('object');
-//         expect(res.status).to.equal(404);
-//         expect(res.body.status).to.equal(404);
-//         done();
-//       });
-//   });
-// });
+describe(' (17) signin with valid information  to get specific mentors who does not exist  ', () => {
+  const user = fakeuser.web_users;
+  const user_info = user[3];
+  const mentee_token = jwt.sign({ user_info }, process.env.PASS_KEY, { expiresIn: '1h' });
+  it('should return info', (done) => {
+    chai.request(app)
+      .get('/api/v2/mentors/-1')
+      .set('authorization', mentee_token)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(404);
+        expect(res.body.status).to.equal(404);
+        done();
+      });
+  });
+});
 
 
-// describe(' (18) signin with valid information  to get specific mentor who exist  ', () => {
-//   const user_info = user[1];
-//   const mentee_token = jwt.sign({ user_info }, process.env.PASS_KEY, { expiresIn: '1h' });
-//   it('should return info', (done) => {
-//     chai.request(app)
-//       .get('/api/v1/mentors/3')
-//       .set('authorization', mentee_token)
-//       .end((err, res) => {
-//         expect(res.body).to.be.an('object');
-//         expect(res.status).to.equal(200);
-//         expect(res.body.status).to.equal(200);
-//         done();
-//       });
-//   });
-// });
+describe(' (18) signin with valid information  to get specific mentor who exist  ', () => {
+  const user = fakeuser.web_users;
+  const user_info = user[3]
+  const mentee_token = jwt.sign({ user_info }, process.env.PASS_KEY, { expiresIn: '1h' });
+  it('should return info', (done) => {
+    chai.request(app)
+      .get('/api/v2/mentors/3')
+      .set('authorization', mentee_token)
+      .end((err, res) => {
+        expect(res.body).to.be.an('object');
+        expect(res.status).to.equal(200);
+        expect(res.body.status).to.equal(200);
+        done();
+      });
+  });
+});
 
 
 // describe(' (19) signin with valid information  to make session request with invalid input', () => {

@@ -23,10 +23,17 @@ class Mentee_modal
    }
 
   
-  specific_mentor =(data)=>
+  specific_mentor = async (id) =>
   {
-  const specific_mentor= db_users.find(all=>all.id==data && all.role=="mentor")
-  return specific_mentor;
+    try{
+        let conn = this.connection;
+        await conn.connect()
+        const result = await conn.query(`SELECT * FROM users WHERE id = '${id}' `);
+        return result.rows[0];
+       } catch (error)
+       {
+         console.log(error)
+       }
   }
 
   

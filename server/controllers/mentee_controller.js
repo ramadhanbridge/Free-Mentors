@@ -12,9 +12,8 @@ all_mentors = async (req,res)=>
 
 specific_mentor= async (req,res)=>
 {
-const single_mentor=db.specific_mentor(req.params.mentorid);
-if(!single_mentor){return res.status(404).json({status:404,data:single_mentor})}
-return res.status(200).json({status:200,data:single_mentor})
+const single_mentor= await db.specific_mentor(req.params.mentorid);
+return message.success(res,200,"View specific mentors",single_mentor)
 }
 
 
