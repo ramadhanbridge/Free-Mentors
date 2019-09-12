@@ -25,7 +25,7 @@ class Auth
         password    : await validate.password_encryption(req.body.password),
         role : 'mentee'
         }
-      console.log(data.password)
+      console.log(data.password) 
        const user_info =await  db.signup(data);
        const token  =jwtValidation.jwt_signin(user_info)
        
@@ -39,7 +39,8 @@ class Auth
 
 signin=async (req,res)=>
 {
-  const token  =jwtValidation.jwt_signin(req.body)
+  const user_info  =await  db.information(req.body.email);
+  const token  =jwtValidation.jwt_signin(user_info)
   return  message.success(res,200,"successfully logged in",token)
 } 
 

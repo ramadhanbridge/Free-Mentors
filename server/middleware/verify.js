@@ -16,6 +16,7 @@ const TOKEN = (req, res, next) => {
 const ADMIN = (req, res, next) => {
   verify(req.token, process.env.PASS_KEY, (err, admin_info) => {
     if (err) { return res.status(403).json({ status: 403, message: 'forbidden, not admin..' }); }
+
     if (admin_info.user_info.role == 'admin') {
       res.admin_info = admin_info;
       return next();

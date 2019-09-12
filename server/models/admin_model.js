@@ -1,32 +1,27 @@
-import user_table from './db';
-const review_table=user_table.review;
-const webuser_table=user_table.web_user;
+import  conn  from '../config/db'
+
 class Admin_modal
 {
-
+    constructor() {
+        this.connection = conn.dbConnection();
+       }
  
-  
-   admin_change_mentee  =(data)=>
+    admin_change_mentee  = async (id) =>
    {
-    const change_user=webuser_table.find(single=>single.id==data && single.role=="mentee")
-    return change_user;
+    try{
+        let conn = this.connection;
+        await conn.connect()
+        console.log('connectionm')
+        const result = await conn.query(`UPDATE users SET role = 'mentor' WHERE id = '${id}' AND role = 'mentee' returning *;`);
+        return result.rows[0];
+       } catch (error)
+       {
+         console.log(error)
+       }
+    
    }
 
   
-    admin_delete_session =(data)=>
-   {
-   const delete_review=review_table.find(single=> single.sessionId==data)
-    if(delete_review){
-        const postion = review_table.findIndex(x => x.sessionId == delete_review.sessionId)
-        review_table.splice(postion,1);
-        return true
-    }
    
-   return false;
-   }
-
-  
-
-
 }
 export default new Admin_modal() ;
