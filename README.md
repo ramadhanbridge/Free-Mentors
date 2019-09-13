@@ -33,11 +33,9 @@
 | GET        | `/mentors `   | mentee should be able to get all mentors|
 | GET          | `/mentors/:userId:`   |mentee should be able get specific mentor|
 | POST  |`/sessions` |mentee should be able to create mentorship request|
-| GET         | `/sessions`   |Mentor should be able to view all mentorship request sessions|
-| GET         | `/sessions`   |Mentee should be able to view all his mentorship  sessions request |
 | PATCH          | `:userId/accept`   |Mentor should be able to accept a mentorship request sessions|
-| PATCH          | `/:userId>/reject`   |Mentor should be able to reject a mentorship sessions request |
-| DELETE          | `/sessions/:userId>/review`   | Admin should be able to delete review deemed inappropriate |
+| PATCH          | `:userId>/reject`   |Mentor should be able to reject a mentorship sessions request |
+
 
 
  #### Technology used to create endpoints:
