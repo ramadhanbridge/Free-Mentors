@@ -126,22 +126,3 @@ describe(' (5) signin with invalid information, api/v1/auth/signup', () => {
   });
 });
 
-
-describe(' (6) signin with valid information as mentee, api/v1/auth/signin', () => {
-  it('should return info', (done) => {
-    const user = fakeuser.web_users;
-    const user_info = user[14];
-    chai.request(app)
-      .post('/api/v2/auth/signin')
-      .set('Content-Type', 'application/json')
-      .send(user_info)
-      .end((err, res) => {
-        expect(res.body).to.be.an('object');
-        expect(res.status).to.equal(200);
-        expect(res.body.status).to.equal(200);
-        expect(res.body.message).to.equal('successfully logged in');
-        done();
-      });
-  });
-});
-
