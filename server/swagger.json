@@ -2,12 +2,12 @@
     "swagger": "2.0",
     "info": {
      "description": "Free-Mentors",
-     "version": "api/v1",
+     "version": "api/v2",
      "title": "Free Mentors",
      "termsOfService": "http://swagger.io/terms/"
     },
     "host": "https://adc10.herokuapp.com/",
-    "basePath": "/api/v1", 
+    "basePath": "/api/v2", 
 
     "tags": [
      {
