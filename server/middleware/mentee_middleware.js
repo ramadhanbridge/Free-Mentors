@@ -8,10 +8,10 @@ class Mentee
 {
 const single_mentor= await db.specific_mentor(req.params.mentorid);
 if(!single_mentor){return message.error(res,404,"mentor does not exist")}
-next(res.mentee_info)
+next(res.user_info)
 }
 
-
+ 
 request_Validate = async (req,res, next)=> 
 {
 

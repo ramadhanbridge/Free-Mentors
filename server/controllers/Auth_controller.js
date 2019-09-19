@@ -25,7 +25,7 @@ class Auth
         password    : await validate.password_encryption(req.body.password),
         role : 'mentee'
         }
-      console.log(data.password) 
+ 
        const user_info =await  db.signup(data);
        const token  =jwtValidation.jwt_signin(user_info)
        

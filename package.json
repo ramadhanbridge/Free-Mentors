@@ -5,9 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node server/index.js",
-    "lint": "eslint server/**/*.js",
-    "lint:fix": "eslint ./server/**/*.js --fix",
-    "start:db":"babel-node server/config/db.js",
+    "start:db": "babel-node server/config/db.js",
     "test": "nyc mocha server/test --require @babel/polyfill --require @babel/register --timeout 10000 --exit",
     "coverage": "nyc npm test && nyc report --reporter=text-lcov | coveralls",
     "showCoverage": "start coverage/server/index.html"
@@ -22,7 +20,7 @@
     "@babel/preset-env": "^7.5.5",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
-    "eslint": "^6.1.0",
+    "eslint": "^6.4.0",
     "eslint-config-airbnb": "^18.0.1",
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.18.2",

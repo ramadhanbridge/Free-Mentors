@@ -8,7 +8,7 @@ class Session_modal
    all_sessions  =(data)=>
    {
    const all_sessions= db.filter(specific=> specific.mentorId==data)
-    return all_sessions;
+   return all_sessions;
    }
   
     all_session_request=(data)=>
